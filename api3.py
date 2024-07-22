@@ -2,17 +2,8 @@ from fastapi import FastAPI, HTTPException, Form
 from fastapi.responses import JSONResponse
 from langchain_community.chat_models import ChatOllama
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
-from dotenv import load_dotenv
-import os
 
-# Load environment variables
-load_dotenv()
-
-# Get the API key for OpenAI from environment variables
-# openai_api_key = os.getenv("OPENAI_API_KEY")
-
-# Initialize ChatOpenAI with the API key
-llm = ChatOllama(temperature=0, model="mistral")
+llm = ChatOllama(temperature=0, model="mistral", base_url="https://2x4avbk3d9ppgu-11434.proxy.runpod.net/")
 
 app = FastAPI()
 
