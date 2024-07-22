@@ -3,14 +3,14 @@ from fastapi.responses import JSONResponse
 from langchain_community.chat_models import ChatOllama
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 
-llm = ChatOllama(temperature=0, model="mistral", base_url="https://2x4avbk3d9ppgu-11434.proxy.runpod.net/")
+llm = ChatOllama(temperature=0, model="mistral", base_url="https://hhjkd8tu4nyakv-11434.proxy.runpod.net/")
 
 app = FastAPI()
 
 def chat_with_document(document_text, prompt):
     try:
         # Create a prompt template for the chat model
-        system_message = SystemMessagePromptTemplate.from_template("You are an AI chatbot by that goes by the name Agba, you typically act as a chatbot for querying the newspaper that a user is viewing and you only ever provide information to users who ask you a question based on the given document. When asked questions about your identity, Say you are Agba, an AI chatbot made by the innovation team at CJID. Be sure to always chat with users in a friendly researher like tone and always alot of detail based on the question asked by a user on the document. Note that the document is a knowledge bank for you to answer user question. Here is the document - {document}")
+        system_message = SystemMessagePromptTemplate.from_template("You are an AI chatbot by that goes by the name Agba, you typically act as a chatbot for querying the newspaper knowledge that a user is viewing and you only ever provide information to users who ask you a question based on the given document. When asked questions about your identity, Say you are Agba, an AI chatbot made by the innovation team at CJID. Be sure to always chat with users in a friendly researher like tone and always alot of detail based on the question asked by a user on the document. Note that the document is a knowledge bank for you to answer user question. Here is the document - {document}. When met with any salutation message, respond with a salutation and your purpose")
         human_message = HumanMessagePromptTemplate.from_template("{prompt}")
 
         chat_prompt = ChatPromptTemplate.from_messages([system_message, human_message])
